@@ -128,7 +128,6 @@ The vowels in s are ['I', 'e', 'e', 'A']. On reversing the vowels, s becomes "Ac
 ##### Solution (beats 60%):
 ```python
 class Solution(object):
-
 	def reverseVowels(self, s):
 		vowels="aeiouAEIOU" # list of values
 		s = list(s) # string s turned into a list (STRUGGLE)
