@@ -26,3 +26,36 @@ class Solution(object):
 			r -= 1
 		return " ".join(s)
 ```
+
+
+## 238. Product of Array Except Self
+
+##### Description:
+- Given an integer array `nums`, return _an array_ `answer` _such that_ `answer[i]` _is equal to the product of all the elements of_ `nums` _except_ `nums[i]`.
+- The product of any prefix or suffix of `nums` is **guaranteed** to fit in a **32-bit** integer.
+- You must write an algorithm that runs in `O(n)` time and without using the division operation.
+
+##### Example 1:
+```
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+```
+
+##### Solution (beats 100%):
+```python
+def productExceptSelf(nums):
+	n = len(nums)
+	leftProduct = [1] * n 
+	rightProduct = [1] * n
+	result = [0] * n
+	# calculate product of everything to the left of the index
+	for i in range(1, n-1):
+		leftProduct[i] = leftProduct[i-1] * nums[i-1]
+	# calculate the product of everything to the right of the index
+	for i in range(n-2, -1, -1):
+		rightProduct[i] = rightProduct[i+1] * nums[i+1]
+	# calculate the product of the left and right
+	for i in range(n):
+		result[i] = leftProduct[i] * rightProduct[i]
+	return result
+```
