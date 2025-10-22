@@ -31,3 +31,18 @@ def productExceptSelf(nums):
     for i in range(n):
         result[i] = leftProduct[i] * rightProduct[i]
     return result
+
+'''
+344. Increasing Triplet Subsequence
+'''
+def inscreasingTriplets(nums):
+	first = second = float('inf')
+	
+	for n in nums:
+		if n <= first:
+			first = n
+		elif n <= second:
+			second = n
+		else:
+			return True
+	return False
