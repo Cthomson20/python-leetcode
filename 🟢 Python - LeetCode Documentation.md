@@ -157,3 +157,37 @@ class Solution(object):
 		return "".join(s) # add the list of s to an empty string using join
 ```
 
+## 283. Move Zeros
+##### Description: 
+- Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+- Note that you must do this in-place without making a copy of the array.
+
+##### Example 1:
+```
+Input: nums = [0,1,0,3,12]
+Output: [1,3,12,0,0]
+```
+
+##### Solution (beats 48%):
+```python
+class Solution(object):
+    def moveZeroes(self, nums):
+        l = 0
+        r = 1
+
+        while r <= len(nums)-1:
+            if (nums[l] == 0 and nums[r] != 0):
+                nums[l], nums[r] = nums[r], nums[l]
+                l += 1
+                r += 1
+            elif (nums[l] != 0 and nums[r] == 0):
+                l += 1
+                r += 1
+            elif nums[l] == 0 and nums[r] == 0:
+                r += 1
+            else:
+                r += 1
+                l += 1
+        return nums
+```
+

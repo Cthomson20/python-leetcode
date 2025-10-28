@@ -91,3 +91,26 @@ def reverseVowels(self, s):
             i += 1
             j -= 1
     return "".join(s) # add the list of s to an empty string using join
+
+
+'''
+283. Move Zeros
+'''
+def moveZeroes(self, nums):
+    l = 0
+    r = 1
+
+    while r <= len(nums)-1:
+        if (nums[l] == 0 and nums[r] != 0):
+            nums[l], nums[r] = nums[r], nums[l]
+            l += 1
+            r += 1
+        elif (nums[l] != 0 and nums[r] == 0):
+            l += 1
+            r += 1
+        elif nums[l] == 0 and nums[r] == 0:
+            r += 1
+        else:
+            r += 1
+            l += 1
+    return nums
